@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+#####################################
+#                                   #
+#  @author      : 00xWolf           #
+#    GitHub    : @mmsaeed509       #
+#    Developer : Mahmoud Mohamed   #
+#  﫥  Copyright : Exodia OS         #
+#                                   #
+#####################################
+
+DIR="$HOME/.config/i3"
+
+rofi_command="rofi -theme $DIR/rofi/themes/asroot.rasi"
+
+# Apps #
+terminal=" Alacritty"
+files=" Thunar"
+editor=" Geany"
+clifm=" Ranger"
+lpad=" Leafpad"
+vim=" Vim"
+caja=" Caja"
+
+# Variable passed to rofi #
+options="$terminal\n$files\n$editor\n$clifm\n$lpad\n$vim\n$caja"
+
+term='alacritty --class alacritty-float,alacritty-float --config-file /root/.config/alacritty/alacritty.toml'
+
+# Functions #
+chosen="$(echo -e "$options" | $rofi_command -p "Run as root" -dmenu -selected-row 0)"
+case $chosen in
+    $terminal)
+        "$DIR"/bin/apps_as_root "$term"
+        ;;
+    $files)
+        "$DIR"/bin/apps_as_root 'dbus-run-session thunar'
+        ;;
+    $editor)
+        "$DIR"/bin/apps_as_root geany
+        ;;
+    $clifm)
+        "$DIR"/bin/apps_as_root "$term -e ranger"
+        ;;
+    $lpad)
+        "$DIR"/bin/apps_as_root leafpad
+        ;;
+    $vim)
+        "$DIR"/bin/apps_as_root "$term -e vim"
+        ;;
+    $caja)
+        "$DIR"/bin/apps_as_root caja
+        ;;
+esac
+
+

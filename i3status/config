@@ -1,0 +1,84 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+#        color_good = "#00e6ac"
+#		 color_bad = "#ff0000"
+#        color_degraded = "#ffff66"
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+  output_format = "i3bar"
+  colors = true
+  color_good = "#0099ac"
+  color_degraded = "#dddd66"
+  color_bad = "#ff1111"
+  interval = 1
+  "markup"="pango"
+}
+
+# D/U speed
+order += "disk /"
+order += "memory"
+order += "wireless _first_"
+order += "battery 1"
+order += "tztime local"
+
+disk "/" {
+        format = "<span> ⛁ %avail</span> "
+        #format = " ⛁ %avail "
+}
+load {
+	format="%1min"
+}
+memory {
+	format = "<span>Mem: %available</span> <span> Free: %free</span>"
+	format_degraded ="Memory LOW: %free"
+	threshold_critical = "5%"
+	threshold_degraded = "10%"
+}
+
+wireless _first_ {
+#format_up = "(%quality at %essid)"
+#format_down = "W: down"
+format_up = "<span color='#FFFFFF'>  %quality</span>"
+format_down = "<span color='#FFFFFF'>"#"[  ]  Wifi: down</span>"
+}
+
+ethernet _first_ {
+# if you use %speed, i3status requires root privileges
+format_up = "<span color='#FFFFFF'>%ip | %speed </span>"
+format_down = " no lan "
+}
+
+battery 1 {
+  #format = "<span>%status %percentage %remaining %emptytime</span>"
+  format = "<span>%status  %percentage</span>"
+  status_chr =   #"[  ] "
+  status_bat = "   "
+  status_unk = "[? ukwn ]"
+  status_full = "[  ]"
+  path = "/sys/class/power_supply/BAT0/uevent"
+  low_threshold = 10
+  last_full_capacity = true
+  hide_seconds = true
+  integer_battery_capacity = true
+}
+
+# Check path: cat /sys/class/hwmon/hwmon*/temp1_input
+
+
+volume master {
+        format = "<span >VOL: %volume</span>"
+        format_muted = "<span color='#cfafc8'>[  ]: muted (%volume) </span>"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+tztime local {
+format = "<span color='#60ADED'>%a. %d.%m.%y | %H:%M</span>"
+locale = "en_US.UTF-8"
+}
+
