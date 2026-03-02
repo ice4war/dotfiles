@@ -1,0 +1,4 @@
+rofi \
+    -show drun \
+    -show-icons \
+    -theme /usr/share/rofi/themes/gruvbox-dark.rasi
