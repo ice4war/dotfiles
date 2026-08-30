@@ -383,7 +383,7 @@ mode "$mode_gaps_outer" {
 ######################################################################
 exec_always --no-startup-id pkill feh dunst picom nm-applet
 exec_always --no-startup-id pkill volumeicon
-exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/wallpaper/BlueLady.png
+exec_always --no-startup-id feh --bg-fill ~/.config/i3/spaceman.png
 exec_always --no-startup-id picom -b
 exec_always --no-startup-id dunst
 exec_always --no-startup-id volumeicon &

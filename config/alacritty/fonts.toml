@@ -15,11 +15,11 @@ family = "FiraCode Nerd Font"
 
 ## If the family is not specified, it will fall back to the value specified for the normal font.
 [font.bold]
-family = "FiraCode Nerd Font"
+family = "JetBrainsMono Nerd Font"
 
 ## If the family is not specified, it will fall back to the value specified for the normal font.
 [font.italic]
-family = "FiraCode Nerd Font"
+family = "JetBrainsMono Nerd Font"
 
 ## If the family is not specified, it will fall back to the value specified for the normal font.
 [font.bold_italic]
